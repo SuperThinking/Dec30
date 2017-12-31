@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#333"
     tools:context="straightforwardapps.dec30.MainActivity">
 
     <ListView
 
-        android:layout_width="match_parent"
+        android:layout_width="365dp"
         android:layout_height="wrap_content"
         android:id="@+id/tv"
-        android:background="#050404">
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff">
 
     </ListView>
 
@@ -24,7 +26,7 @@
         android:text="Loading.."
         android:id="@+id/snack_layout"
         android:gravity="center"
-        android:textSize="30dp"/>
+        android:textSize="25dp"/>
 
 
 

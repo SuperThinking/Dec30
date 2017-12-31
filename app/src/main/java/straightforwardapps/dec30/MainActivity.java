@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 x1[i] = (i+1)+"]\t"+x[i];
             }
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.list_item_custom, x1);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.list_item_custom, x1);
             tv.setAdapter(arrayAdapter);
 
             tv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

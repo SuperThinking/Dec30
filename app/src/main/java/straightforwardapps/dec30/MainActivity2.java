@@ -2,12 +2,17 @@ package straightforwardapps.dec30;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.annotation.AnimatorRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
@@ -29,12 +34,19 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     TextView wv;
+    Button but;
+    WebView webView;
+    String link = "https://www.gadgetsnow.com/tech-news";
+    CardView cv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         wv = (TextView) findViewById(R.id.wv);
-        String link = getIntent().getStringExtra("link");
+        webView = (WebView) findViewById(R.id.webview);
+        cv = (CardView) findViewById(R.id.card_l);
+        but = (Button) findViewById(R.id.but);
+        link = getIntent().getStringExtra("link");
         btask x = new btask();
         x.execute("https://www.gadgetsnow.com/tech-news"+link);
     }
@@ -96,7 +108,34 @@ public class MainActivity2 extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             wv.setText(s);
+            but.setVisibility(View.VISIBLE);
+            Animation animation1 =
+                    AnimationUtils.loadAnimation(getApplicationContext(), R.anim.load_anim);
+            but.startAnimation(animation1);
+            MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+            animation1.setInterpolator(interpolator);
 
+            but.startAnimation(animation1);
         }
+    }
+
+    class MyBounceInterpolator implements android.view.animation.Interpolator {
+        private double mAmplitude = 1;
+        private double mFrequency = 10;
+
+        MyBounceInterpolator(double amplitude, double frequency) {
+            mAmplitude = amplitude;
+            mFrequency = frequency;
+        }
+
+        public float getInterpolation(float time) {
+            return (float) (-1 * Math.pow(Math.E, -time/ mAmplitude) *
+                    Math.cos(mFrequency * time) + 1);
+        }
+    }
+
+    public void webset(View view)
+    {
+        webView.loadUrl("https://www.gadgetsnow.com/tech-news"+link);
     }
 }

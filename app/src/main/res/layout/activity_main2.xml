@@ -6,12 +6,44 @@
     android:layout_height="match_parent"
     tools:context="straightforwardapps.dec30.MainActivity2">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="#d4d0d0"
+        android:id="@+id/card_l">
     <TextView
-        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:id="@+id/wv"
-        android:text="LOADING..">
-
-    </TextView>
-
+        android:textSize="23dp"
+        android:text="LOADING.."
+        android:textColor="#151414"
+        />
+    </android.support.v7.widget.CardView>
+    
+    <WebView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_l"
+        android:id="@+id/webview"
+        android:layout_centerHorizontal="true"></WebView>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/webview"
+        android:id="@+id/space1"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/space1"
+        android:layout_centerHorizontal="true"
+        android:text="Click Me to get the full news"
+        android:id="@+id/but"
+        android:onClick="webset"
+        android:background="#b6b6b6"
+        android:visibility="invisible"/>
 </RelativeLayout>
