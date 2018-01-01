@@ -1,28 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="straightforwardapps.dec30.MainActivity2">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <android.support.v7.widget.CardView
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:background="#d4d0d0"
         android:id="@+id/card_l">
-    <TextView
-        android:textAlignment="center"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/wv"
-        android:textSize="23dp"
-        android:text="LOADING.."
-        android:textColor="#151414"
-        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/iv"/>
+            <TextView
+                android:textAlignment="center"
+                android:layout_width="320dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:id="@+id/wv"
+                android:layout_below="@+id/iv"
+                android:textSize="23dp"
+                android:text="LOADING.."
+                android:textColor="#151414"
+                />
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
+
     
     <WebView
         android:layout_width="wrap_content"
@@ -36,14 +51,21 @@
         android:layout_below="@+id/webview"
         android:id="@+id/space1"
         />
+
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/space1"
         android:layout_centerHorizontal="true"
-        android:text="Click Me to get the full news"
+        android:text="@string/click_me_to_get_the_full_news"
         android:id="@+id/but"
         android:onClick="webset"
         android:background="#b6b6b6"
         android:visibility="invisible"/>
-</RelativeLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/but"/>
+    </RelativeLayout>
+</ScrollView>

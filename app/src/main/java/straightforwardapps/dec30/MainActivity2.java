@@ -1,6 +1,10 @@
 package straightforwardapps.dec30;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.annotation.AnimatorRes;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +17,7 @@ import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
@@ -34,6 +39,8 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     TextView wv;
+    ImageView iv;
+    Bitmap bitmap = null;
     Button but;
     WebView webView;
     String link = "https://www.gadgetsnow.com/tech-news";
@@ -45,6 +52,7 @@ public class MainActivity2 extends AppCompatActivity {
         wv = (TextView) findViewById(R.id.wv);
         webView = (WebView) findViewById(R.id.webview);
         cv = (CardView) findViewById(R.id.card_l);
+        iv = (ImageView) findViewById(R.id.iv);
         but = (Button) findViewById(R.id.but);
         link = getIntent().getStringExtra("link");
         btask x = new btask();
@@ -88,6 +96,9 @@ public class MainActivity2 extends AppCompatActivity {
                 Elements e = document.select("meta");
                 List<String> e1 = e.eachAttr("content");
                 String[] x = e1.toArray(new String[0]);
+                String imgsrc = e1.get(8);
+                bitmap = BitmapFactory.decodeStream((InputStream)new URL(imgsrc).getContent());
+
                 return x[2];
             }
 
@@ -115,9 +126,15 @@ public class MainActivity2 extends AppCompatActivity {
             MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
             animation1.setInterpolator(interpolator);
 
+
+                BitmapDrawable ob = new BitmapDrawable(getResources(), bitmap);
+                iv.setBackground(ob);
+
             but.startAnimation(animation1);
         }
     }
+
+
 
     class MyBounceInterpolator implements android.view.animation.Interpolator {
         private double mAmplitude = 1;

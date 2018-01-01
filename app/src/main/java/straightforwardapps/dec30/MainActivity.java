@@ -150,10 +150,15 @@ public class MainActivity extends AppCompatActivity {
             //Snackbar.make(snack_layout, s, Snackbar.LENGTH_SHORT).show();
 
             String[] x = s.split("\n");
-            final String[] x1 = new String[x.length-31];
-            for(int i=0; i<x.length-31; i++)
+            final String[] x1 = new String[x.length-41];
+            //final String[] x3 = new String[x.length-41];
+            int j=0;
+            for(int i=10; i<x.length-31; i++)
             {
-                x1[i] = (i+1)+"]\t"+x[i];
+                x1[j] = (j+1)+"]\t"+x[i];
+                String x3 = x2[i];
+                x2[j] = x3;
+                j++;
             }
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.list_item_custom, x1);
             tv.setAdapter(arrayAdapter);
